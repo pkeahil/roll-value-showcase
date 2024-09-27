@@ -1,0 +1,8 @@
+- energyType == character's element (anemo for Xiao, etc.)
+  - pyro: 1
+  - hydro: 2
+  - dendro: 3
+  - electro: 4
+  - cryo: 5
+  - anemo: 7
+  - geo: 8
