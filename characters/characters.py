@@ -1,9 +1,9 @@
 
 import json
 
-from localization import localization
+from localization.localization import localization
 
-character_info = json.loads(open("characters.json").read())
+character_info = json.loads(open("characters/characters.json").read())
 
 
 def get_character_name(avatarInfo: dict):

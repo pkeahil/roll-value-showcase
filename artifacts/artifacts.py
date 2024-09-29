@@ -8,7 +8,7 @@ import json
 
 
 def get_substat_map():
-    substats = json.loads(open("artifact_substats.json").read())
+    substats = json.loads(open("artifacts/artifact_substats.json").read())
     substat_map = {}
     for substat in substats:
         substat_map[substat["id"]] = substat
@@ -64,7 +64,10 @@ def calculate_artifact_cv(artifact: dict):
 
 
 def calculate_artifact_rv(artifact: dict, character: str):
-    useful_substats = json.loads(open("character_useful_substats.json").read())
+    useful_substats = json.loads(
+        open("artifacts/character_useful_substats.json")
+        .read()
+    )
     roll_value = 0.0
 
     reliquary = artifact["reliquary"]

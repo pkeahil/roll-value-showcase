@@ -1,6 +1,6 @@
-import artifacts
-import characters
-import profiles
+import artifacts.artifacts as artifacts
+import characters.characters as characters
+import profiles.profiles as profiles
 
 
 def get_character_showcase(uid: str):
