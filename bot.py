@@ -31,8 +31,8 @@ async def showcase_rv(ctx, uid: str = None):
     for character in characters:
         embed_field += "%-15s: %.2fCV, %.0f%%RV\n" % (
             character,
-            characters[character]["CV"],
-            characters[character]["RV"]
+            characters[character]["Total"]["CV"],
+            characters[character]["Total"]["RV"]
         )
     embed_field += "```"
     embed = discord.Embed(
@@ -40,6 +40,11 @@ async def showcase_rv(ctx, uid: str = None):
     )
     embed.add_field(name="Characters", value=embed_field)
     await ctx.respond(embed=embed, view=FullShowcaseView(characters))
+
+
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user} (ID: {bot.user.id})")
 
 
 bot.run(os.environ["BOT_TOKEN"])
