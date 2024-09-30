@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 import artifacts.artifacts as artifacts
 import characters.characters as characters
 import profiles.profiles as profiles
@@ -28,12 +30,10 @@ def get_character_showcase(uid: str):
     character_cvs = character_cvs.items()
     sorted_cvs = sorted(character_cvs, key=lambda item: item[1], reverse=True)
 
-    result = "Character Stats:\n```\n"
-    print("Character Stats:")
+    result = defaultdict(dict)
     for character, cv in sorted_cvs:
-        result += "- "
-        result += "%-15s: " % character
-        result += "%.1fCV, " % cv
-        result += "%.0f%% RV\n" % (character_rvs[character])
-    result += "```"
-    return result
+        result[character]["CV"] = cv
+        result[character]["RV"] = character_rvs[character]
+
+    print(dict(result))
+    return dict(result)

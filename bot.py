@@ -4,6 +4,7 @@ import discord
 from dotenv import load_dotenv
 
 from commands import showcase
+from views.showcase import FullShowcaseView
 
 load_dotenv()
 bot = discord.Bot()
@@ -24,7 +25,21 @@ async def ping(ctx):
 async def showcase_rv(ctx, uid: str = None):
     if not uid:
         await ctx.respond("No uid provided")
-    showcase_result = showcase.get_character_showcase(uid)
-    await ctx.respond(showcase_result)
+        return
+    characters = showcase.get_character_showcase(uid)
+    embed_field = "```\n"
+    for character in characters:
+        embed_field += "%-15s: %.2fCV, %.0f%%RV\n" % (
+            character,
+            characters[character]["CV"],
+            characters[character]["RV"]
+        )
+    embed_field += "```"
+    embed = discord.Embed(
+        title="Character Showcase"
+    )
+    embed.add_field(name="Characters", value=embed_field)
+    await ctx.respond(embed=embed, view=FullShowcaseView(characters))
+
 
 bot.run(os.environ["BOT_TOKEN"])
