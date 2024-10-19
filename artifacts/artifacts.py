@@ -63,7 +63,24 @@ def calculate_artifact_cv(artifact: dict):
     return crit_value
 
 
-def calculate_artifact_rv(artifact: dict, character: str):
+def get_roll_value_color(roll_value: int) -> str:
+    if roll_value >= 800:
+        return "lightpurple"
+    elif roll_value >= 700:
+        return "aqua"
+    elif roll_value >= 600:
+        return "lightgreen"
+    elif roll_value >= 500:
+        return "yellow"
+    elif roll_value >= 400:
+        return "orange"
+    elif roll_value >= 300:
+        return "red"
+    else:
+        return "gray"
+
+
+def calculate_artifact_rv(artifact: dict, character: str) -> tuple[int, str]:
     useful_substats = json.loads(
         open("artifacts/character_useful_substats.json")
         .read()
@@ -80,4 +97,5 @@ def calculate_artifact_rv(artifact: dict, character: str):
             current_roll_value = (current_roll_strength + 6) * 10
             roll_value += current_roll_value
 
-    return roll_value
+    roll_value = int(roll_value)
+    return roll_value, get_roll_value_color(roll_value)
