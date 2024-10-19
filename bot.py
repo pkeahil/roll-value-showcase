@@ -29,17 +29,18 @@ async def showcase_rv(ctx, uid: str = None):
     characters = showcase.get_character_showcase(uid)
     embed_field = "```\n"
     for character in characters:
-        embed_field += "%-15s: %.2fCV, %.0f%%RV\n" % (
-            character,
-            characters[character]["Total"]["CV"],
-            characters[character]["Total"]["RV"]
+        embed_field += "%-15s \n" % (
+            character
         )
     embed_field += "```"
     embed = discord.Embed(
         title="Character Showcase"
     )
     embed.add_field(name="Characters", value=embed_field)
-    await ctx.respond(embed=embed, view=FullShowcaseView(characters))
+    await ctx.respond(
+        embed=embed,
+        view=FullShowcaseView(characters)
+    )
 
 
 @bot.event
