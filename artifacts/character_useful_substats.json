@@ -1,54 +1,13 @@
 
 {
-    "Jean": {
+    "Albedo": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
             "FIGHT_PROP_CRITICAL_HURT",
-            "FIGHT_PROP_ATTACK_PERCENT",
-            "FIGHT_PROP_CHARGE_EFFICIENCY"
+            "FIGHT_PROP_DEFENSE_PERCENT"
         ]
     },
-    "Xiao": {
-        "useful_substats": [
-            "FIGHT_PROP_CRITICAL",
-            "FIGHT_PROP_CRITICAL_HURT",
-            "FIGHT_PROP_ATTACK_PERCENT",
-            "FIGHT_PROP_CHARGE_EFFICIENCY"
-        ]
-    },
-    "Tartaglia": {
-        "useful_substats": [
-            "FIGHT_PROP_CRITICAL",
-            "FIGHT_PROP_CRITICAL_HURT",
-            "FIGHT_PROP_ATTACK_PERCENT",
-            "FIGHT_PROP_CHARGE_EFFICIENCY",
-            "FIGHT_PROP_ELEMENT_MASTERY"
-        ]
-    },
-    "Furina": {
-        "useful_substats": [
-            "FIGHT_PROP_CRITICAL",
-            "FIGHT_PROP_CRITICAL_HURT",
-            "FIGHT_PROP_HP_PERCENT",
-            "FIGHT_PROP_CHARGE_EFFICIENCY"
-        ]
-    },
-    "Neuvillette": {
-        "useful_substats": [
-            "FIGHT_PROP_CRITICAL",
-            "FIGHT_PROP_CRITICAL_HURT",
-            "FIGHT_PROP_HP_PERCENT",
-            "FIGHT_PROP_CHARGE_EFFICIENCY"
-        ]
-    },
-    "Yelan": {
-        "useful_substats": [
-            "FIGHT_PROP_CRITICAL",
-            "FIGHT_PROP_CRITICAL_HURT",
-            "FIGHT_PROP_HP_PERCENT",
-            "FIGHT_PROP_CHARGE_EFFICIENCY"
-        ]
-    },
+
     "Alhaitham": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -58,7 +17,15 @@
             "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
-    "Navia": {
+
+    "Aloy": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT"
+        ]
+    },
+
+    "Amber": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
             "FIGHT_PROP_CRITICAL_HURT",
@@ -66,6 +33,17 @@
             "FIGHT_PROP_CHARGE_EFFICIENCY"
         ]
     },
+
+    "Arataki Itto": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_DEFENSE_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Arlecchino": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -74,6 +52,255 @@
             "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
+
+    "Baizhu": {
+        "useful_substats": [
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT"
+        ]
+    },
+
+    "Barbara": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Beidou": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Bennett": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Candace": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Charlotte": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Chevreuse": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Chiori": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_DEFENSE_PERCENT"
+        ]
+    },
+    "Chongyun": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+    "Clorinde": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Collei": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Cyno": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Dehya": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_HP_PERCENT"
+        ]
+    },
+    "Diluc": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Diona": {
+        "useful_substats": [
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+    "Dori": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_HP_PERCENT"
+        ]
+    },
+    "Emilie": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT"
+        ]
+    },
+    "Eula": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+    "Faruzan": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+    "Fischl": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Freminet": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Furina": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Gaming": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Ganyu": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+    "Gorou": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_DEFENSE_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+    
+    "Hu Tao": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Jean": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Kaedehara Kazuha": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Kaeya": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Kamisato Ayaka": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -82,6 +309,7 @@
             "FIGHT_PROP_CHARGE_EFFICIENCY"
         ]
     },
+
     "Kamisato Ayato": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -90,12 +318,456 @@
             "FIGHT_PROP_CHARGE_EFFICIENCY"
         ]
     },
+
+    "Kaveh": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Keqing": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Kirara": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Klee": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Kujou Sara": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Kuki Shinobu": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Layla": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Lisa": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Lynette": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Lyney": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Mika": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Mona": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Mualani": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
             "FIGHT_PROP_CRITICAL_HURT",
             "FIGHT_PROP_HP_PERCENT",
             "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Nahida": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Navia": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Neuvillette": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Nilou": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_HP"
+        ]
+    },
+
+    "Ningguang": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Noelle": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_DEFENSE_PERCENT"
+        ]
+    },
+
+    "Qiqi": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT"
+        ]
+    },
+
+    "Raiden Shogun": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Razor": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Rosaria": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Sayu": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Sethos": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Shenhe": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Sigewinne": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Sucrose": {
+        "useful_substats": [
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Sangonomiya Kokomi": {
+        "useful_substats": [
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_HP"
+        ]
+    },
+
+    "Shikanoin Heizou": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Tartaglia": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Thoma": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Tighnari": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Venti": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]    
+    },
+
+    "Wanderer": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Wriothesley": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Xiangling": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Xianyun": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Xiao": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Xingqiu": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Xinyan": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_DEFENSE_PERCENT"
+        ]
+    },
+
+    "Yae Miko": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Yanfei": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Yaoyao": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "FIGHT_PROP_HP_PERCENT"
+        ]
+    },
+
+    "Yelan": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Yoimiya": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Yunjin": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_DEFENSE_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_DEFENSE"
+        ]
+    },
+
+    "Zhongli": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_HP_PERCENT"
         ]
     }
 }
