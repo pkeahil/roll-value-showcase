@@ -1,0 +1,6 @@
+{
+    "black-formatter.args": [
+        "--max-line-length",
+        "79"
+    ]
+}
