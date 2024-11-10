@@ -1,0 +1,6 @@
+
+pillow
+py-cord
+python-dotenv
+redis
+requests

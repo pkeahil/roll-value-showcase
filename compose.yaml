@@ -1,0 +1,13 @@
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    network_mode: host
+  
+  redis:
+    image: redis
+    network_mode: host
