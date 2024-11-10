@@ -120,13 +120,6 @@ def draw_roll_value(
 
     im.paste(temp_blank_image, (x + 525, y + 15))
 
-    # draw.text(
-    #     (x, y),
-    #     f"{roll_value}%RV",
-    #     fill=roll_value_color,
-    #     font=font
-    # )
-
 
 include_percentage_substats = [
     "FIGHT_PROP_CRITICAL",
@@ -135,8 +128,10 @@ include_percentage_substats = [
 ]
 
 
-def draw_character_showcase(character: str, artifacts_list: list) -> Image:
-
+def draw_character_showcase(
+        character: str,
+        character_id: str,
+        artifacts_list: list) -> Image:
     # Create base image, initialize font
     im = Image.new("RGB", (1920, 1080), "black")
     draw = ImageDraw.Draw(im)
