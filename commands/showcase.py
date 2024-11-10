@@ -15,6 +15,7 @@ def get_character_showcase(uid: str):
     for avatarInfo in avatarInfoList:
         character_name = characters.get_character_name(avatarInfo)
         artifact_list = characters.get_artifact_list(avatarInfo)
-        result[character_name] = artifact_list
+        result[character_name]["artifacts"] = artifact_list
+        result[character_name]["id"] = str(avatarInfo["avatarId"])
 
     return dict(result)
