@@ -268,8 +268,6 @@ def draw_character_constellations(
     constellation = 0
     if "talentIdList" in avatarInfo:
         constellation = len(avatarInfo["talentIdList"])
-        print(char_info)
-        print(char_info["Element"])
         bg_color = bg_colors[char_info["Element"]]
         for i in range(constellation):
             const = char_info["Consts"][i]
@@ -361,7 +359,6 @@ def draw_character_showcase(
     )
 
     # Draw character total stats
-    print(json.dumps(avatarInfo, indent=1))
     draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 5, 825)
 
     # Draw character talents
