@@ -9,7 +9,7 @@ Includes relevant information about releases.
 - Including Akasha ranking of character
 - Adding weapon level and quality
 
-## 1.1.0
+## 1.1.0 - 11/23/2024
 
 Features:
 
