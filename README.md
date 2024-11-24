@@ -16,6 +16,10 @@ Here are some of the generated images!
 
 ![Sample Furina Build](./docs/sample_build_images/furina_build_showcase.png)
 
+**Xiao**
+
+![Sample Xiao Build](./docs/sample_build_images/xiao_build_showcase.png)
+
 
 ## Invite the Bot!
 
