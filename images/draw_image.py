@@ -2,7 +2,6 @@
 
 # 50, 250, 450, 650, 850 y
 # 1200 x
-import json
 from io import BytesIO
 
 import requests
