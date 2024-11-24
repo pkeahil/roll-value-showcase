@@ -5,13 +5,19 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
-- Adding user's UID to the generated images
-- Showing full character stats
-- Including constellations
-- Including character talent levels
 - Including character "friendship" level
-- Including character weapon
+- Including Akasha ranking of character
+- Adding weapon level and quality
 
+## 1.1.0
+
+Features:
+
+- Added user's UID to the top left of the generated image
+- Added full character stats display at the bottom of the generated image
+- Added character's unlocked constellations
+- Added character's talent levels
+- Added weapon with base ATK and secondary stat
 
 ## 1.0.0
 
