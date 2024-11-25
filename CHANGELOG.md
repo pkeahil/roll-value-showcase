@@ -5,9 +5,17 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
-- Including character "friendship" level
-- Including Akasha ranking of character
 - Adding weapon level and quality
+- Adding artifact set bonus display
+
+## 1.2.0 - 11/25/2024
+
+Features:
+
+- Added character's name to the generated image
+- Added character's level to the generated image
+- Added character's friendshp level to the generated image
+- Added Akasha ranking for this character's build
 
 ## 1.1.0 - 11/23/2024
 
