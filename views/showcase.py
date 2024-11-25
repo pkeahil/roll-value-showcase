@@ -20,7 +20,7 @@ class SelectCharacters(discord.ui.Select):
             self,
             interaction: discord.Interaction):
         character_name = self.values[0]
-
+        await interaction.response.edit_message(content="Working on it...")
         image = draw_character_showcase(
             character_name,
             self.characters[character_name]["avatarInfo"],
@@ -34,10 +34,11 @@ class SelectCharacters(discord.ui.Select):
             title="Character Showcase"
         )
         embed.set_image(url="attachment://image.png")
-
-        await interaction.response.edit_message(
+        await interaction.followup.edit_message(
+            message_id=interaction.message.id,
             view=FullShowcaseView(self.characters, character_name),
             file=discord.File(image_bytes_buffer, filename="image.png"),
+            content=None,
             embed=embed
         )
 
