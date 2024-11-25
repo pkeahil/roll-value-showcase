@@ -5,7 +5,7 @@
 from io import BytesIO
 
 import requests
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageChops
 
 from artifacts import artifacts
 from characters import characters
@@ -99,7 +99,20 @@ def draw_splash_art(im: Image, character: str) -> Image:
 
     splash_art = splash_art.resize((new_width, new_height))
     splash_art.thumbnail((750, 750))
-    im.paste(splash_art, (50, 50), splash_art)
+
+    mask = Image.open("images/ui/splash_art_mask.png").convert("L")
+    mask = mask.resize((splash_art.size[0], splash_art.size[1]), Image.NEAREST)
+    # mask = mask.rotate(180)
+
+    alpha = splash_art.split()[-1]
+
+    new_alpha = ImageOps.invert(mask)
+    alpha = ImageChops.multiply(alpha, new_alpha)
+
+    result = splash_art.copy()
+    result.putalpha(alpha)
+
+    im.paste(result, (50, 50), result)
 
 
 def draw_character_stats(
@@ -218,6 +231,7 @@ def draw_character_talents(
             ).resize((80, 80))
         )
         talent_level = talent_levels[talent_id]
+        crowned = talent_levels[talent_id] == 10
 
         if "proudSkillExtraLevelMap" in avatarInfo:
             extra_levels = avatarInfo["proudSkillExtraLevelMap"]
@@ -240,7 +254,7 @@ def draw_character_talents(
         draw.text(
             (x + 12, y + 13),
             f"{talent_level}",
-            fill="white",
+            fill="#FFD700" if crowned else "white",
             font=font,
             align="center"
         )
@@ -405,6 +419,87 @@ def draw_character_showcase(
         }""",
         fill="white",
         font=font
+    )
+
+    # Draw character name
+    larger_font = ImageFont.truetype("fonts/JA-JP.TTF", 36)
+    draw.text(
+        (60, 60),
+        f"{character}",
+        fill="white",
+        font=larger_font
+    )
+
+    # Draw character level
+    character_level = avatarInfo["propMap"]["4001"]["val"]
+    draw.text(
+        (60, 100),
+        f"Lv. {character_level}",
+        fill="white",
+        font=font
+    )
+
+    # Draw character friendship
+    friendship_icon = Image.open(
+        "images/stat_icons/friendship.png"
+    ).resize((30, 30))
+    im.paste(friendship_icon, (60, 130), friendship_icon)
+    friendship_level = avatarInfo["fetterInfo"]["expLevel"]
+    draw.text(
+        (90, 130),
+        f"{friendship_level}",
+        fill="white",
+        font=font
+    )
+
+    # Get Akasha ranking
+    akasha_api_url = "https://akasha.cv/api"
+    response = requests.get(
+        f"{akasha_api_url}/getCalculationsForUser/{player_uid}"
+    )
+    ranking_data = response.json()["data"]
+    our_characters_data = [
+        item for item in ranking_data if item["name"] == character
+    ]
+    our_characters_data = our_characters_data[0]
+    rank_calc = our_characters_data["calculations"]["fit"]
+    rank = rank_calc["ranking"]
+    out_of = rank_calc["outOf"]
+    leaderboard_name = rank_calc["short"]
+    if "variant" in rank_calc:
+        leaderboard_name += f" {rank_calc['variant']['displayName']}"
+
+    draw.rounded_rectangle(
+        (805, 550, 1100, 680),
+        radius=10,
+        fill="black",
+        outline="white"
+    )
+
+    draw.text(
+        (950, 560),
+        f"{leaderboard_name}",
+        fill="white",
+        font=font,
+        align="center",
+        anchor="mt"
+    )
+
+    percentage = 100 - int((out_of - rank) / out_of * 100)
+    draw.text(
+        (950, 600),
+        f"Top {percentage}%",
+        fill="white",
+        font=font,
+        anchor="mt"
+    )
+
+    draw.text(
+        (950, 640),
+        f"{rank} / {out_of // 1000}k",
+        fill="white",
+        font=font,
+        anchor="mt"
     )
 
     # Draw artifacts
