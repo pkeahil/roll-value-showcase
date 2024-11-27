@@ -107,6 +107,15 @@
         ]
     },
 
+    "Chasca": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
     "Chevreuse": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -513,6 +522,15 @@
             "FIGHT_PROP_ATTACK_PERCENT",
             "FIGHT_PROP_CHARGE_EFFICIENCY",
             "FIGHT_PROP_DEFENSE_PERCENT"
+        ]
+    },
+
+    "Ororon": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
         ]
     },
 
