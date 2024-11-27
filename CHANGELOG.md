@@ -5,8 +5,20 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
-- Adding weapon level and quality
+- Adding weapon level, quality (4 vs 5 star), and name
 - Adding artifact set bonus display
+- Add character quality, 4- vs 5-star
+
+## 1.2.1 - 11/26/2024
+
+Features:
+
+- Added Chasca and Ororon to reflect Genshin 5.2 release on 11/19/2024
+
+Fixes:
+
+- Fixed not generating image when no leaderboard data is available
+- Fixed loc.json and characters.json not being updated automatically on new versions
 
 ## 1.2.0 - 11/25/2024
 
