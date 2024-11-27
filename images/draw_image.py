@@ -461,13 +461,18 @@ def draw_character_showcase(
     our_characters_data = [
         item for item in ranking_data if item["name"] == character
     ]
-    our_characters_data = our_characters_data[0]
-    rank_calc = our_characters_data["calculations"]["fit"]
-    rank = rank_calc["ranking"]
-    out_of = rank_calc["outOf"]
-    leaderboard_name = rank_calc["short"]
-    if "variant" in rank_calc:
-        leaderboard_name += f" {rank_calc['variant']['displayName']}"
+    has_leaderboard = True
+    if not our_characters_data:
+        leaderboard_name = "No Leaderboard Data"
+        has_leaderboard = False
+    else:
+        our_characters_data = our_characters_data[0]
+        rank_calc = our_characters_data["calculations"]["fit"]
+        rank = rank_calc["ranking"]
+        out_of = rank_calc["outOf"]
+        leaderboard_name = rank_calc["short"]
+        if "variant" in rank_calc:
+            leaderboard_name += f" {rank_calc['variant']['displayName']}"
 
     draw.rounded_rectangle(
         (805, 550, 1100, 680),
@@ -485,22 +490,23 @@ def draw_character_showcase(
         anchor="mt"
     )
 
-    percentage = 100 - int((out_of - rank) / out_of * 100)
-    draw.text(
-        (950, 600),
-        f"Top {percentage}%",
-        fill="white",
-        font=font,
-        anchor="mt"
-    )
+    if has_leaderboard:
+        percentage = 100 - int((out_of - rank) / out_of * 100)
+        draw.text(
+            (950, 600),
+            f"Top {percentage}%",
+            fill="white",
+            font=font,
+            anchor="mt"
+        )
 
-    draw.text(
-        (950, 640),
-        f"{rank} / {out_of // 1000}k",
-        fill="white",
-        font=font,
-        anchor="mt"
-    )
+        draw.text(
+            (950, 640),
+            f"{rank} / {out_of // 1000}k",
+            fill="white",
+            font=font,
+            anchor="mt"
+        )
 
     # Draw artifacts
     x_box = 1200
