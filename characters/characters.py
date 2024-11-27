@@ -1,9 +1,20 @@
 
-import json
+import requests
 
 from localization.localization import localization
 
-character_info = json.loads(open("characters/characters.json").read())
+
+def get_character_info():
+    github_url = "https://raw.githubusercontent.com"
+    enka_repo = "EnkaNetwork/API-docs/refs/heads/master"
+    character_endpoint = "store/characters.json"
+
+    url = f"{github_url}/{enka_repo}/{character_endpoint}"
+    response = requests.get(url)
+    return response.json()
+
+
+character_info = get_character_info()
 
 
 def get_character_name(avatarInfo: dict):
