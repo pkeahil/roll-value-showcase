@@ -2,6 +2,7 @@
 
 # 50, 250, 450, 650, 850 y
 # 1200 x
+import json
 from io import BytesIO
 
 import requests
@@ -9,6 +10,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageChops
 
 from artifacts import artifacts
 from characters import characters
+from localization.localization import localization
 
 enka_api = "https://enka.network/"
 
@@ -21,13 +23,13 @@ def draw_artifact_icon(im: Image, icon: str, x: int, y: int):
 
 def draw_artifact_box(draw: ImageDraw, x: int, y: int, bg_color: str):
     draw.rounded_rectangle(
-        (x, y, x + 600, y + 150),
+        (x, y, x + 280, y + 200),
         fill=bg_color,
         width=10,
         radius=20
     )
     draw.rounded_rectangle(
-        (x + 5, y + 5, x + 595, y + 145),
+        (x + 5, y + 5, x + 275, y + 195),
         fill="black",
         width=10,
         radius=20
@@ -56,9 +58,9 @@ def draw_artifact_substats(
         or main_stat["mainPropId"].endswith("_PERCENT")
         or main_stat["mainPropId"].endswith("_ADD_HURT")
     )
-    im.paste(main_stat_image, (x - 175, y + 75), main_stat_image)
+    im.paste(main_stat_image, (x - 160, y + 75), main_stat_image)
     draw.text(
-        (x - 140, y + 75),
+        (x - 125, y + 75),
         (f"{main_stat_value}{'%' if main_stat_is_pct else ''}"),
         fill="white",
         font=font
@@ -74,15 +76,14 @@ def draw_artifact_substats(
         )
         substat_value = substat["statValue"]
         substat_image = Image.open(f"images/stat_icons/{substat_icon}.png")
-        im.paste(substat_image, (x - 35, y - 3), substat_image)
+        im.paste(substat_image, (x - 35, y - 8), substat_image)
         draw.text(
-            (x, y),
+            (x, y - 5),
             (f"{substat_value}{'%' if is_percentage else ''}"),
             fill="white",
             font=font
         )
-        x = x_start + (((i + 1) % 2) * 200)
-        y = y_start + (((i + 1) // 2) * 55)
+        y = y + 45
         i += 1
 
 
@@ -123,7 +124,7 @@ def draw_character_stats(
         x: int,  # start at 5
         y: int):  # start at 825
     draw.rounded_rectangle(
-        (5, 825, 1150, 1025),
+        (x, y, x + 550, y + 380),
         fill="black",
         outline="white",
         width=3,
@@ -147,64 +148,64 @@ def draw_character_stats(
     )
     im.paste(
         Image.open("images/stat_icons/FIGHT_PROP_CRITICAL.png"),
-        (x + 230, y + 25),
+        (x + 10, y + 175),
         Image.open("images/stat_icons/FIGHT_PROP_CRITICAL.png")
     )
     im.paste(
         Image.open("images/stat_icons/FIGHT_PROP_CRITICAL_HURT.png"),
-        (x + 230, y + 75),
+        (x + 10, y + 225),
         Image.open("images/stat_icons/FIGHT_PROP_CRITICAL_HURT.png")
     )
     im.paste(
         Image.open("images/stat_icons/FIGHT_PROP_CHARGE_EFFICIENCY.png"),
-        (x + 560, y + 25),  # x + 560, y + 25
+        (x + 10, y + 275),  # x + 560, y + 25
         Image.open("images/stat_icons/FIGHT_PROP_CHARGE_EFFICIENCY.png")
     )
     im.paste(
         Image.open("images/stat_icons/FIGHT_PROP_ELEMENT_MASTERY.png"),
-        (x + 560, y + 75),
+        (x + 10, y + 325),
         Image.open("images/stat_icons/FIGHT_PROP_ELEMENT_MASTERY.png")
     )
 
     # paste image of def on image
     draw.text(
-        (65, 850),  # x + 60, y + 25
+        (x + 60, y + 25),  # x + 60, y + 25
         f"HP: {int(total_stats['2000'])}",
         fill="white",
         font=font
     )
     draw.text(
-        (65, 900),  # x + 60, y + 75
+        (x + 60, y + 75),  # x + 60, y + 75
         f"ATK: {int(total_stats['2001'])}",
         fill="white",
         font=font
     )
     draw.text(
-        (65, 950),  # x + 60, y + 125
+        (x + 60, y + 125),  # x + 60, y + 125
         f"DEF: {int(total_stats['2002'])}",
         fill="white",
         font=font
     )
     draw.text(
-        (275, 850),  # x + 270, y + 25
+        (x + 60, y + 175),  # x + 270, y + 25
         f"CRIT Rate: {round(total_stats['20'] * 100, 1)}%",
         fill="white",
         font=font
     )
     draw.text(
-        (275, 900),  # x + 270, y + 75
+        (x + 60, y + 225),  # x + 270, y + 75
         f"CRIT DMG: {round(total_stats['22'] * 100, 1)}%",
         fill="white",
         font=font
     )
     draw.text(
-        (615, 850),  # x + 610, y + 25
+        (x + 60, y + 275),  # x + 610, y + 25
         f"Energy Recharge: {round(total_stats['23'] * 100, 1)}%",
         fill="white",
         font=font
     )
     draw.text(
-        (615, 900),  # x + 610, y + 75
+        (x + 60, y + 325),  # x + 610, y + 75
         f"Elemental Mastery: {int(round(total_stats['28'], 0))}",
         fill="white",
         font=font
@@ -228,7 +229,7 @@ def draw_character_talents(
         talent_icon = (
             Image.open(
                 BytesIO(talent_response.content)
-            ).resize((80, 80))
+            ).resize((60, 60))
         )
         talent_level = talent_levels[talent_id]
         crowned = talent_levels[talent_id] == 10
@@ -241,11 +242,12 @@ def draw_character_talents(
 
         draw.circle(
             (x, y),
-            40,
+            33,
             fill="black",
-            outline="white"
+            outline="#FFD700" if crowned else "white",
+            width=3
         )
-        im.paste(talent_icon, (x - 40, y - 40), talent_icon)
+        im.paste(talent_icon, (x - 30, y - 30), talent_icon)
         draw.circle(
             (x + 25, y + 25),
             20,
@@ -259,7 +261,7 @@ def draw_character_talents(
             align="center"
         )
 
-        x += 100
+        y += 85
 
 
 def draw_character_constellations(
@@ -269,6 +271,7 @@ def draw_character_constellations(
         char_info: dict,
         x: int,
         y: int):
+    x_start = x
     bg_colors = {
         "Water": "#00BFFF",
         "Fire": "#EC4923",
@@ -288,60 +291,168 @@ def draw_character_constellations(
             const_icon = (
                 Image.open(
                     BytesIO(const_response.content)
-                ).resize((80, 80))
+                ).resize((60, 60))
             )
             draw.circle(
-                (x + 40, y + 40),
-                40,
+                (x + 30, y + 30),
+                30,
                 fill=bg_color,
-                outline="white",
-                width=2
+                outline="white"
             )
             im.paste(const_icon, (x, y), const_icon)
-            x += 100
-            if (i + 1) % 3 == 0:
-                # move to next line
-                x = 810
-                y += 100
+            y += 70
 
     for i in range(constellation, 6):
-        locked = Image.open("images/ui/LOCKED.png").resize((40, 40))
+        locked = Image.open("images/ui/LOCKED.png").resize((30, 30))
         draw.circle(
-            (x + 40, y + 40),
-            40,
+            (x + 30, y + 30),
+            30,
             fill="black",
             outline="white",
         )
-        im.paste(locked, (x + 20, y + 20), locked)
-        x += 100
-        if (i + 1) % 3 == 0:
-            # move to next line
-            x = 810
-            y += 100
+        im.paste(locked, (x + 15, y + 15), locked)
+        y += 70
 
 
 def draw_roll_value(
-        im: Image,
         font: ImageFont,
+        draw: ImageDraw,
         roll_value: int,
         roll_value_color: str,
         x: int,
         y: int):
 
-    # we want to draw the roll value vertically instead of horizontally
-    temp_blank_image = Image.new("RGB", (200, 200), "black")
-    temp_font = font
-    temp_draw = ImageDraw.Draw(temp_blank_image)
-    temp_draw.text(
-        (0, 0),
+    draw.text(
+        (x + 20, y + 150),
         f"{roll_value}%RV",
         fill=roll_value_color,
-        font=temp_font
+        font=font
     )
-    temp_blank_image = temp_blank_image.crop((0, 0, 125, 50))
-    temp_blank_image = temp_blank_image.rotate(270, expand=True)
 
-    im.paste(temp_blank_image, (x + 525, y + 15))
+
+def draw_character_weapon(
+    im: Image,
+    draw: ImageDraw,
+    font: ImageFont,
+    avatarInfo: dict,
+    x: int,
+    y: int
+):
+    # Draw weapon
+    print(x, x + 550)
+    draw.rounded_rectangle(
+        (x, y, x + 550, y + 125),  # (805, 400, 1100, 500),
+        radius=10,
+        fill="black",
+        outline="white",
+        width=3
+    )
+    flat = avatarInfo["equipList"][-1]["flat"]
+
+    weapon_icon = flat["icon"]
+    weapon_response = requests.get(f"{enka_api}/ui/{weapon_icon}.png")
+    weapon = Image.open(BytesIO(weapon_response.content)).resize((100, 100))
+    im.paste(weapon, (x, y), weapon)
+
+    weapon_name_hash = flat["nameTextMapHash"]
+    weapon_name: str = localization["en"][weapon_name_hash]
+    needs_ellipses = len(weapon_name) > 30
+
+    weapon_name = (weapon_name[:27] + "..." if needs_ellipses else weapon_name)
+    draw.text(
+        (x + 300, y + 10),
+        f"{weapon_name}",
+        fill="white",
+        font=font,
+        anchor="mt"
+    )
+
+    weapon_base_atk = flat["weaponStats"][0]
+    atk_icon = Image.open(
+        "images/stat_icons/FIGHT_PROP_ATTACK.png"
+    ).resize((30, 30))
+    im.paste(atk_icon, (x + 110, y + 40), atk_icon)
+
+    draw.text(
+        (x + 150, y + 40),
+        f"{weapon_base_atk['statValue']}",
+        fill="white",
+        font=font
+    )
+
+    secondary_stat = flat["weaponStats"][1]
+    secondary_stat_icon = Image.open(
+        f"images/stat_icons/{secondary_stat['appendPropId']}.png"
+    ).resize((30, 30))
+    secondary_stat_id = secondary_stat["appendPropId"]
+    im.paste(secondary_stat_icon, (x + 110, y + 75), secondary_stat_icon)
+    draw.text(
+        (x + 150, y + 75),
+        f"""{secondary_stat['statValue']}{
+            '%' if secondary_stat_id in include_percentage_substats
+            else ''
+        }""",
+        fill="white",
+        font=font
+    )
+
+
+def draw_akasha_ranking(
+    player_uid: str,
+    character: str,
+    draw: ImageDraw,
+    font: ImageFont,
+    x: int,
+    y: int
+):
+    # Get Akasha ranking
+    akasha_api_url = "https://akasha.cv/api"
+    response = requests.get(
+        f"{akasha_api_url}/getCalculationsForUser/{player_uid}"
+    )
+    ranking_data = response.json()["data"]
+    our_characters_data = [
+        item for item in ranking_data if item["name"] == character
+    ]
+    has_leaderboard = True
+    if not our_characters_data:
+        leaderboard_name = "No Leaderboard Data"
+        has_leaderboard = False
+    else:
+        our_characters_data = our_characters_data[0]
+        rank_calc = our_characters_data["calculations"]["fit"]
+        rank = rank_calc["ranking"]
+        out_of = rank_calc["outOf"]
+        leaderboard_name = rank_calc["short"]
+        if "variant" in rank_calc:
+            leaderboard_name += f" {rank_calc['variant']['displayName']}"
+
+    draw.rounded_rectangle(
+        (x, y, x + 550, y + 100),
+        radius=10,
+        fill="black",
+        outline="white",
+        width=3
+    )
+
+    draw.text(
+        (x + 275, y + 10),
+        f"{leaderboard_name}",
+        fill="white",
+        font=font,
+        align="center",
+        anchor="mt"
+    )
+
+    if has_leaderboard:
+        percentage = 100 - int((out_of - rank) / out_of * 100)
+        draw.text(
+            (x + 275, y + 50),
+            f"Top {percentage}%\t{rank} / {out_of // 1000}k",
+            fill="white",
+            font=font,
+            anchor="mt"
+        )
 
 
 include_percentage_substats = [
@@ -356,7 +467,7 @@ def draw_character_showcase(
         avatarInfo: dict,
         player_uid: str) -> Image:
     # Create base image, initialize font
-    im = Image.new("RGB", (1920, 1080), "black")
+    im = Image.new("RGB", (1525, 1080), "black")
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype("fonts/JA-JP.TTF", 24)
 
@@ -372,54 +483,17 @@ def draw_character_showcase(
     )
 
     # Draw character total stats
-    draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 5, 825)
+    draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 925, 50)
 
     # Draw character talents
     char_info = characters.character_info[str(avatarInfo["avatarId"])]
-    draw_character_talents(im, draw, font, avatarInfo, char_info, 850, 95)
+    draw_character_talents(im, draw, font, avatarInfo, char_info, 855, 90)
 
     # Draw character constellations
-    draw_character_constellations(im, draw, avatarInfo, char_info, 810, 175)
+    draw_character_constellations(im, draw, avatarInfo, char_info, 825, 340)
 
     # Draw weapon
-    draw.rounded_rectangle(
-        (805, 400, 1100, 500),
-        radius=10,
-        fill="black",
-        outline="white"
-    )
-    flat = avatarInfo["equipList"][-1]["flat"]
-    weapon_icon = flat["icon"]
-    weapon_response = requests.get(f"{enka_api}/ui/{weapon_icon}.png")
-    weapon = Image.open(BytesIO(weapon_response.content)).resize((100, 100))
-    im.paste(weapon, (800, 400), weapon)
-    weapon_base_atk = flat["weaponStats"][0]
-    atk_icon = Image.open(
-        "images/stat_icons/FIGHT_PROP_ATTACK.png"
-    ).resize((30, 30))
-    im.paste(atk_icon, (910, 410), atk_icon)
-    draw.text(
-        (950, 410),
-        f"{weapon_base_atk['statValue']}",
-        fill="white",
-        font=font
-    )
-
-    secondary_stat = flat["weaponStats"][1]
-    secondary_stat_icon = Image.open(
-        f"images/stat_icons/{secondary_stat['appendPropId']}.png"
-    ).resize((30, 30))
-    secondary_stat_id = secondary_stat["appendPropId"]
-    im.paste(secondary_stat_icon, (910, 460), secondary_stat_icon)
-    draw.text(
-        (950, 460),
-        f"""{secondary_stat['statValue']}{
-            '%' if secondary_stat_id in include_percentage_substats
-            else ''
-        }""",
-        fill="white",
-        font=font
-    )
+    draw_character_weapon(im, draw, font, avatarInfo, 925, 435)
 
     # Draw character name
     larger_font = ImageFont.truetype("fonts/JA-JP.TTF", 36)
@@ -453,64 +527,11 @@ def draw_character_showcase(
     )
 
     # Get Akasha ranking
-    akasha_api_url = "https://akasha.cv/api"
-    response = requests.get(
-        f"{akasha_api_url}/getCalculationsForUser/{player_uid}"
-    )
-    ranking_data = response.json()["data"]
-    our_characters_data = [
-        item for item in ranking_data if item["name"] == character
-    ]
-    has_leaderboard = True
-    if not our_characters_data:
-        leaderboard_name = "No Leaderboard Data"
-        has_leaderboard = False
-    else:
-        our_characters_data = our_characters_data[0]
-        rank_calc = our_characters_data["calculations"]["fit"]
-        rank = rank_calc["ranking"]
-        out_of = rank_calc["outOf"]
-        leaderboard_name = rank_calc["short"]
-        if "variant" in rank_calc:
-            leaderboard_name += f" {rank_calc['variant']['displayName']}"
-
-    draw.rounded_rectangle(
-        (805, 550, 1100, 680),
-        radius=10,
-        fill="black",
-        outline="white"
-    )
-
-    draw.text(
-        (950, 560),
-        f"{leaderboard_name}",
-        fill="white",
-        font=font,
-        align="center",
-        anchor="mt"
-    )
-
-    if has_leaderboard:
-        percentage = 100 - int((out_of - rank) / out_of * 100)
-        draw.text(
-            (950, 600),
-            f"Top {percentage}%",
-            fill="white",
-            font=font,
-            anchor="mt"
-        )
-
-        draw.text(
-            (950, 640),
-            f"{rank} / {out_of // 1000}k",
-            fill="white",
-            font=font,
-            anchor="mt"
-        )
+    draw_akasha_ranking(player_uid, character, draw, font, 925, 565)
 
     # Draw artifacts
-    x_box = 1200
-    y_box = 50
+    x_box = 50
+    y_box = 825
     artifacts_list = characters.get_artifact_list(avatarInfo)
     for artifact in artifacts_list:
         flat = artifact["flat"]
@@ -522,17 +543,17 @@ def draw_character_showcase(
             draw_artifact_box(draw, x_box, y_box, roll_value_color)
             draw_artifact_icon(im, flat["icon"], x_box, y_box)
             draw_artifact_substats(
-                im, draw, font, flat, x_box + 200, y_box + 25
+                im, draw, font, flat, x_box + 185, y_box + 25
             )
             draw_roll_value(
-                im,
                 font,
+                draw,
                 roll_value,
                 roll_value_color,
                 x_box,
                 y_box
             )
 
-            y_box += 200
+            x_box += 285
 
     return im
