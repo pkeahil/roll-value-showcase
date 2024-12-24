@@ -5,9 +5,24 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
-- Adding weapon level, quality (4 vs 5 star), and name
+- Adding weapon level,
+- Adding weapon quality (4 vs 5 star)
 - Adding artifact set bonus display
 - Add character quality, 4- vs 5-star
+- Add profile / saving
+- Add highlight to constellation
+
+## 1.3.1 -- 12/23/2024
+
+Features:
+
+- Added weapon name
+- Added highlighting of talent bubble if it's crowned (max level)
+- Moved artifacts to the bottom of the image
+- Moved character stats to the right side of the image
+- Moved weapon display to the right side of the image
+- Moved Akasha ranking display to the right side of the image
+
 
 ## 1.2.1 - 11/26/2024
 
