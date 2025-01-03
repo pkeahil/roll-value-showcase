@@ -141,6 +141,17 @@
             "FIGHT_PROP_CHARGE_EFFICIENCY"
         ]
     },
+
+    "Citlali": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Clorinde": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -438,6 +449,15 @@
             "FIGHT_PROP_CRITICAL_HURT",
             "FIGHT_PROP_ATTACK_PERCENT",
             "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Mavuika": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
 
