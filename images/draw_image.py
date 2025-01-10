@@ -98,7 +98,7 @@ def draw_splash_art(im: Image, character: str) -> Image:
     new_height = new_width * splash_art.height // splash_art.width
 
     splash_art = splash_art.resize((new_width, new_height))
-    splash_art.thumbnail((750, 750))
+    splash_art.thumbnail((705, 705))
 
     mask = Image.open("images/ui/splash_art_mask.png").convert("L")
     mask = mask.resize((splash_art.size[0], splash_art.size[1]), Image.NEAREST)
@@ -112,7 +112,7 @@ def draw_splash_art(im: Image, character: str) -> Image:
     result = splash_art.copy()
     result.putalpha(alpha)
 
-    im.paste(result, (50, 50), result)
+    im.paste(result, (20, 20), result)
 
 
 def draw_character_stats(
@@ -347,11 +347,32 @@ def draw_character_weapon(
     )
     flat = avatarInfo["equipList"][-1]["flat"]
 
+    # Weapon Icon
     weapon_icon = flat["icon"]
     weapon_response = requests.get(f"{enka_api}/ui/{weapon_icon}.png")
     weapon = Image.open(BytesIO(weapon_response.content)).resize((100, 100))
-    im.paste(weapon, (x, y), weapon)
+    im.paste(weapon, (x + 15, y), weapon)
 
+    # 4 vs 5-star weapon?
+    quality = flat["rankLevel"]
+    star_image = Image.open(
+        "images/ui/orange_star.png"
+    ).resize((20, 20))
+    for i in range(quality):
+        start = 10 * (5 - quality)
+        im.paste(star_image, (x + (20 * i) + 15 + start, y + 90), star_image)
+
+    # Refinement rank (R1-R5)
+    all_weapon_info = avatarInfo["equipList"][-1]
+    refine_level = list(all_weapon_info["weapon"]["affixMap"].values())[0] + 1
+    draw.text(
+        (x + 10, y + 10),
+        f"R{refine_level}",
+        fill="white",
+        font=font
+    )
+
+    # Weapon Name
     weapon_name_hash = flat["nameTextMapHash"]
     weapon_name: str = localization["en"][weapon_name_hash]
     needs_ellipses = len(weapon_name) > 30
@@ -365,33 +386,45 @@ def draw_character_weapon(
         anchor="mt"
     )
 
+    # Weapon base ATK
     weapon_base_atk = flat["weaponStats"][0]
     atk_icon = Image.open(
         "images/stat_icons/FIGHT_PROP_ATTACK.png"
     ).resize((30, 30))
-    im.paste(atk_icon, (x + 110, y + 40), atk_icon)
+    im.paste(atk_icon, (x + 160, y + 45), atk_icon)
 
     draw.text(
-        (x + 150, y + 40),
+        (x + 200, y + 45),
         f"{weapon_base_atk['statValue']}",
         fill="white",
         font=font
     )
 
+    # Weapon secondary stat
     secondary_stat = flat["weaponStats"][1]
     secondary_stat_icon = Image.open(
         f"images/stat_icons/{secondary_stat['appendPropId']}.png"
     ).resize((30, 30))
     secondary_stat_id = secondary_stat["appendPropId"]
-    im.paste(secondary_stat_icon, (x + 110, y + 75), secondary_stat_icon)
+    im.paste(secondary_stat_icon, (x + 280, y + 45), secondary_stat_icon)
     draw.text(
-        (x + 150, y + 75),
+        (x + 320, y + 45),
         f"""{secondary_stat['statValue']}{
             '%' if secondary_stat_id in include_percentage_substats
             else ''
         }""",
         fill="white",
         font=font
+    )
+
+    weapon_level = all_weapon_info["weapon"]["level"]
+    draw.text(
+        (x + 275, y + 85),
+        f"Lv. {weapon_level}",
+        fill="white",
+        font=font,
+        align="center",
+        anchor="mt"
     )
 
 
@@ -475,6 +508,7 @@ def draw_artifact_set_bonuses(
             bonuses[name_hash] = 4
 
     # draw white box around
+    print(y, y + 80)
     draw.rounded_rectangle(
         (x, y, x + 550, y + 80),
         fill="black",
@@ -492,7 +526,7 @@ def draw_artifact_set_bonuses(
     else:
         for name_hash, count in bonuses.items():
             name = localization["en"][name_hash]
-            name = name[:25] + "..." if len(name) > 25 else name
+            name = name[:22] + "..." if len(name) > 25 else name
 
             draw.text(
                 (x + 275, y + 10),
@@ -517,7 +551,7 @@ def draw_character_showcase(
         avatarInfo: dict,
         player_uid: str) -> Image:
     # Create base image, initialize font
-    im = Image.new("RGB", (1525, 1080), "black")
+    im = Image.new("RGB", (1465, 990), "black")
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype("fonts/JA-JP.TTF", 24)
 
@@ -526,29 +560,29 @@ def draw_character_showcase(
 
     # Draw player's uid
     draw.text(
-        (10, 10),
+        (20, 730),
         f"UID: {player_uid}",
         fill="white",
         font=font
     )
 
     # Draw character total stats
-    draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 925, 50)
+    draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 845, 20)
 
     # Draw character talents
     char_info = characters.character_info[str(avatarInfo["avatarId"])]
-    draw_character_talents(im, draw, font, avatarInfo, char_info, 855, 90)
+    draw_character_talents(im, draw, font, avatarInfo, char_info, 780, 60)
 
     # Draw character constellations
-    draw_character_constellations(im, draw, avatarInfo, char_info, 825, 340)
+    draw_character_constellations(im, draw, avatarInfo, char_info, 750, 310)
 
     # Draw weapon
-    draw_character_weapon(im, draw, font, avatarInfo, 925, 435)
+    draw_character_weapon(im, draw, font, avatarInfo, 845, 405)
 
     # Draw character name
     larger_font = ImageFont.truetype("fonts/JA-JP.TTF", 36)
     draw.text(
-        (60, 60),
+        (30, 30),
         f"{character}",
         fill="white",
         font=larger_font
@@ -557,7 +591,7 @@ def draw_character_showcase(
     # Draw character level
     character_level = avatarInfo["propMap"]["4001"]["val"]
     draw.text(
-        (60, 100),
+        (30, 70),
         f"Lv. {character_level}",
         fill="white",
         font=font
@@ -567,21 +601,21 @@ def draw_character_showcase(
     friendship_icon = Image.open(
         "images/stat_icons/friendship.png"
     ).resize((30, 30))
-    im.paste(friendship_icon, (60, 130), friendship_icon)
+    im.paste(friendship_icon, (30, 100), friendship_icon)
     friendship_level = avatarInfo["fetterInfo"]["expLevel"]
     draw.text(
-        (90, 130),
+        (60, 100),
         f"{friendship_level}",
         fill="white",
         font=font
     )
 
     # Get Akasha ranking
-    draw_akasha_ranking(player_uid, character, draw, font, 925, 565)
+    draw_akasha_ranking(player_uid, character, draw, font, 845, 535)
 
     # Draw artifacts
-    x_box = 50
-    y_box = 825
+    x_box = 20
+    y_box = 770
     artifacts_list = characters.get_artifact_list(avatarInfo)
     for artifact in artifacts_list:
         flat = artifact["flat"]
@@ -610,8 +644,8 @@ def draw_character_showcase(
         draw,
         font,
         artifacts_list,
-        925,
-        675
+        845,
+        645
     )
 
     return im
