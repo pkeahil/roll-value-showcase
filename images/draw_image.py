@@ -2,7 +2,6 @@
 
 # 50, 250, 450, 650, 850 y
 # 1200 x
-import json
 from io import BytesIO
 
 import requests
@@ -271,7 +270,6 @@ def draw_character_constellations(
         char_info: dict,
         x: int,
         y: int):
-    x_start = x
     bg_colors = {
         "Water": "#00BFFF",
         "Fire": "#EC4923",
@@ -455,6 +453,58 @@ def draw_akasha_ranking(
         )
 
 
+def draw_artifact_set_bonuses(
+    draw: ImageDraw,
+    font: ImageFont,
+    artifacts_list: list,
+    x: int,
+    y: int
+):
+    set_count = {}
+    for artifact in artifacts_list:
+        set_name_hash = artifact["flat"]["setNameTextMapHash"]
+        if set_name_hash not in set_count:
+            set_count[set_name_hash] = 0
+        set_count[set_name_hash] += 1
+
+    bonuses = {}
+    for name_hash, count in set_count.items():
+        if count >= 2 and count < 4:
+            bonuses[name_hash] = 2
+        elif count >= 4:
+            bonuses[name_hash] = 4
+
+    # draw white box around
+    draw.rounded_rectangle(
+        (x, y, x + 550, y + 80),
+        fill="black",
+        radius=10,
+        width=3,
+        outline="white"
+    )
+    if len(bonuses) == 0:
+        draw.text(
+            (x + 275, y + 10),
+            "No Set Bonuses",
+            fill="white",
+            font=font
+        )
+    else:
+        for name_hash, count in bonuses.items():
+            name = localization["en"][name_hash]
+            name = name[:25] + "..." if len(name) > 25 else name
+
+            draw.text(
+                (x + 275, y + 10),
+                f"{name} ({count})",
+                fill="lightgreen",
+                font=font,
+                align="center",
+                anchor="mt"
+            )
+            y += 35
+
+
 include_percentage_substats = [
     "FIGHT_PROP_CRITICAL",
     "FIGHT_PROP_CRITICAL_HURT",
@@ -555,5 +605,13 @@ def draw_character_showcase(
             )
 
             x_box += 285
+
+    draw_artifact_set_bonuses(
+        draw,
+        font,
+        artifacts_list,
+        925,
+        675
+    )
 
     return im
