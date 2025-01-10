@@ -5,12 +5,18 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
-- Adding weapon level,
-- Adding weapon quality (4 vs 5 star)
-- Adding artifact set bonus display
 - Add character quality, 4- vs 5-star
 - Add profile / saving
 - Add highlight to constellation
+
+## 1.4.0 -- 01/09/2025
+
+Features:
+
+- Added weapon level
+- Added weapon quality (4 vs 5 star)
+- Added weapon refinement rank
+- Added artifact set bonus display
 
 ## 1.3.1 -- 12/23/2024
 
