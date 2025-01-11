@@ -25,8 +25,8 @@ def draw_artifact_box(
 ):
     path = f"images/ui/artifact_{bg_color}_quality.png"
     artifact_box = Image.open(path)
-    artifact_box = artifact_box.crop((100, 100, 480, 400)).resize((280, 200))
-    im.paste(artifact_box, (x, y))
+    artifact_box = artifact_box.crop((85, 85, 495, 415)).resize((285, 210))
+    im.paste(artifact_box, (x, y - 5))
 
 
 def draw_artifact_substats(
