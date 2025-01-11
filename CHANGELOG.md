@@ -9,6 +9,12 @@ Includes relevant information about releases.
 - Add profile / saving
 - Add highlight to constellation
 
+# 1.4.2 -- 01/11/2025
+
+Fixes:
+
+- Adjusted the blur intensity on the artifact box shadows
+
 ## 1.4.1 -- 01/10/2025
 
 Features:
