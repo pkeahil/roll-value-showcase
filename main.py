@@ -1,17 +1,34 @@
-import json
 
-from commands import showcase
-from profiles import profiles
+from PIL import Image, ImageDraw, ImageFilter
 
-my_uid = "625733723"
+img = Image.new("RGB", (600, 600), "white")
+draw = ImageDraw.Draw(img)
 
-result = showcase.get_character_showcase(my_uid)
-result2 = profiles.get_player_info(my_uid)
+box_x = 100
+box_y = 100
+box_w = box_x + 280
+box_h = box_y + 200
 
-print(result)
+shadow_blur = 3
 
-with open("./result.json", "w") as file:
-    json.dump(result, file)
+draw.rectangle((box_x, box_y, box_x + box_w, box_y + box_h), fill="black")
 
-with open("./result2.json", "w") as file:
-    json.dump(result2, file)
+shadow_img = Image.new("RGBA", (600, 600), "black")
+shadow_draw = ImageDraw.Draw(shadow_img)
+shadow_draw.rounded_rectangle(
+    (box_x, box_y, box_x + box_w, box_y + box_h),
+    radius=10,
+    fill="yellow"
+)
+
+shadow_img = shadow_img.filter(ImageFilter.GaussianBlur(shadow_blur))
+
+img.paste(shadow_img, (0, 0), shadow_img)
+
+draw.rounded_rectangle(
+    (box_x + 7, box_y + 7, box_x + box_w - 7, box_y + box_h - 7),
+    radius=10,
+    fill="black"
+)
+
+img.show()

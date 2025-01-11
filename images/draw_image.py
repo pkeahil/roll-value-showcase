@@ -20,19 +20,13 @@ def draw_artifact_icon(im: Image, icon: str, x: int, y: int):
     im.paste(artifact_icon, (x + 25, y), artifact_icon)
 
 
-def draw_artifact_box(draw: ImageDraw, x: int, y: int, bg_color: str):
-    draw.rounded_rectangle(
-        (x, y, x + 280, y + 200),
-        fill=bg_color,
-        width=10,
-        radius=20
-    )
-    draw.rounded_rectangle(
-        (x + 5, y + 5, x + 275, y + 195),
-        fill="black",
-        width=10,
-        radius=20
-    )
+def draw_artifact_box(
+    im: Image, x: int, y: int, bg_color: str
+):
+    path = f"images/ui/artifact_{bg_color}_quality.png"
+    artifact_box = Image.open(path)
+    artifact_box = artifact_box.crop((100, 100, 480, 400)).resize((280, 200))
+    im.paste(artifact_box, (x, y))
 
 
 def draw_artifact_substats(
@@ -624,7 +618,7 @@ def draw_character_showcase(
                 artifacts.calculate_artifact_rv(artifact, character)
             )
 
-            draw_artifact_box(draw, x_box, y_box, roll_value_color)
+            draw_artifact_box(im, x_box, y_box, roll_value_color)
             draw_artifact_icon(im, flat["icon"], x_box, y_box)
             draw_artifact_substats(
                 im, draw, font, flat, x_box + 185, y_box + 25

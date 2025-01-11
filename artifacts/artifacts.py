@@ -65,7 +65,7 @@ def calculate_artifact_cv(artifact: dict):
 
 def get_roll_value_color(roll_value: int) -> str:
     if roll_value >= 800:
-        return "lightpurple"
+        return "magenta"
     elif roll_value >= 700:
         return "aqua"
     elif roll_value >= 600:
