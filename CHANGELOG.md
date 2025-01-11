@@ -9,6 +9,12 @@ Includes relevant information about releases.
 - Add profile / saving
 - Add highlight to constellation
 
+## 1.4.1 -- 01/10/2025
+
+Features:
+
+- Added box shadow to artifact items
+
 ## 1.4.0 -- 01/09/2025
 
 Features:
