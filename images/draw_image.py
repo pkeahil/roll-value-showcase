@@ -432,6 +432,10 @@ def draw_akasha_ranking(
 ):
     # Get Akasha ranking
     akasha_api_url = "https://akasha.cv/api"
+
+    # Refresh player data on Akasha
+    requests.get(f"{akasha_api_url}/user/refresh/{player_uid}")
+
     response = requests.get(
         f"{akasha_api_url}/getCalculationsForUser/{player_uid}"
     )
