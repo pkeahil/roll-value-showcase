@@ -222,7 +222,7 @@ def draw_character_talents(
         talent_icon = (
             Image.open(
                 BytesIO(talent_response.content)
-            ).resize((60, 60))
+            ).convert("RGBA").resize((44, 44))
         )
         talent_level = talent_levels[talent_id]
         crowned = talent_levels[talent_id] == 10
@@ -240,7 +240,7 @@ def draw_character_talents(
             outline="#FFD700" if crowned else "white",
             width=3
         )
-        im.paste(talent_icon, (x - 30, y - 30), talent_icon)
+        im.paste(talent_icon, (x - 21, y - 21))
         draw.circle(
             (x + 25, y + 25),
             20,
@@ -344,8 +344,10 @@ def draw_character_weapon(
     # Weapon Icon
     weapon_icon = flat["icon"]
     weapon_response = requests.get(f"{enka_api}/ui/{weapon_icon}.png")
-    weapon = Image.open(BytesIO(weapon_response.content)).resize((100, 100))
-    im.paste(weapon, (x + 15, y), weapon)
+    weapon = Image.open(
+        BytesIO(weapon_response.content)
+    ).convert("RGBA").resize((100, 100))
+    im.paste(weapon, (x + 15, y + 15))
 
     # 4 vs 5-star weapon?
     quality = flat["rankLevel"]
@@ -549,6 +551,7 @@ def draw_character_showcase(
         avatarInfo: dict,
         player_uid: str) -> Image:
     # Create base image, initialize font
+    print("in character showcase now")
     im = Image.new("RGB", (1465, 990), "black")
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype("fonts/JA-JP.TTF", 24)
