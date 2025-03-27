@@ -294,6 +294,15 @@
         ]
     },
 
+    "Iansan": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Jean": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -413,6 +422,16 @@
             "FIGHT_PROP_ELEMENT_MASTERY",
             "FIGHT_PROP_HP_PERCENT",
             "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Lan Yan": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
 
@@ -685,6 +704,16 @@
         ]
     },
 
+    "Varesa": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
     "Venti": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -815,6 +844,15 @@
             "FIGHT_PROP_CRITICAL",
             "FIGHT_PROP_CRITICAL_HURT",
             "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Yumemizuki Mizuki": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
             "FIGHT_PROP_CHARGE_EFFICIENCY",
             "FIGHT_PROP_ELEMENT_MASTERY"
         ]
