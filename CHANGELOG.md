@@ -5,9 +5,11 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
+- Fix being able to interact with someone else's showcase interaction
 - Add character quality, 4- vs 5-star
 - Add profile / saving
 - Add highlight to constellation
+- Add a blue highlight to non-maxed talents that have received a +3 level bonus due to constellations
 
 # 1.4.2 -- 01/11/2025
 
