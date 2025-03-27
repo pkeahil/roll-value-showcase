@@ -283,7 +283,7 @@ def draw_character_constellations(
             const_icon = (
                 Image.open(
                     BytesIO(const_response.content)
-                ).resize((60, 60))
+                ).convert("RGBA").resize((60, 60))
             )
             draw.circle(
                 (x + 30, y + 30),
@@ -291,7 +291,7 @@ def draw_character_constellations(
                 fill=bg_color,
                 outline="white"
             )
-            im.paste(const_icon, (x, y), const_icon)
+            im.paste(const_icon, (x, y))
             y += 70
 
     for i in range(constellation, 6):
