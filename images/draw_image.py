@@ -222,7 +222,7 @@ def draw_character_talents(
         talent_icon = (
             Image.open(
                 BytesIO(talent_response.content)
-            ).convert("RGBA").resize((44, 44))
+            ).convert("RGBA").resize((60, 60))
         )
         talent_level = talent_levels[talent_id]
         crowned = talent_levels[talent_id] == 10
@@ -240,7 +240,7 @@ def draw_character_talents(
             outline="#FFD700" if crowned else "white",
             width=3
         )
-        im.paste(talent_icon, (x - 21, y - 21))
+        im.paste(talent_icon, (x - 30, y - 30), talent_icon)
         draw.circle(
             (x + 25, y + 25),
             20,
@@ -291,7 +291,7 @@ def draw_character_constellations(
                 fill=bg_color,
                 outline="white"
             )
-            im.paste(const_icon, (x, y))
+            im.paste(const_icon, (x, y), const_icon)
             y += 70
 
     for i in range(constellation, 6):
@@ -347,7 +347,7 @@ def draw_character_weapon(
     weapon = Image.open(
         BytesIO(weapon_response.content)
     ).convert("RGBA").resize((100, 100))
-    im.paste(weapon, (x + 15, y + 15))
+    im.paste(weapon, (x + 15, y + 10), weapon)
 
     # 4 vs 5-star weapon?
     quality = flat["rankLevel"]
