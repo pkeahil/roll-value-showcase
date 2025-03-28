@@ -227,11 +227,13 @@ def draw_character_talents(
         talent_level = talent_levels[talent_id]
         crowned = talent_levels[talent_id] == 10
 
+        level_highlight_color = "black"
         if "proudSkillExtraLevelMap" in avatarInfo:
             extra_levels = avatarInfo["proudSkillExtraLevelMap"]
             id = str(char_info["ProudMap"][talent_id])
             if id in extra_levels:
                 talent_level += extra_levels[id]
+                level_highlight_color = "#0388fc"
 
         draw.circle(
             (x, y),
@@ -241,13 +243,16 @@ def draw_character_talents(
             width=3
         )
         im.paste(talent_icon, (x - 30, y - 30), talent_icon)
+
         draw.circle(
             (x + 25, y + 25),
-            20,
-            fill="black"
+            15,
+            fill=level_highlight_color
         )
+        w = draw.textlength(f"{talent_level}", font=font)
+        x_position = x + 25 - w // 2
         draw.text(
-            (x + 12, y + 13),
+            (x_position, y + 13),
             f"{talent_level}",
             fill="#FFD700" if crowned else "white",
             font=font,
