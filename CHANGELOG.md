@@ -9,7 +9,18 @@ Includes relevant information about releases.
 - Add character quality, 4- vs 5-star
 - Add profile / saving
 - Add highlight to constellation
-- Add a blue highlight to non-maxed talents that have received a +3 level bonus due to constellations
+
+# 1.5.0 -- 03/28/2025
+
+Features:
+
+- Added a blue highlight to non-maxed talents that have received a +3 level bonus due to constellations
+- Added characters from 5.3 - 5.5
+
+Fixes:
+
+- Fixed an error where the bot couldn't generate builds due to differences in how Enka returns icon images
+- Fixed the above error causing constellations, talents, and weapons to display weirdly and without highlights
 
 # 1.4.2 -- 01/11/2025
 
