@@ -5,10 +5,15 @@ Includes relevant information about releases.
 
 ## Upcoming:
 
-- Fix being able to interact with someone else's showcase interaction
 - Add character quality, 4- vs 5-star
 - Add profile / saving
 - Add highlight to constellation
+
+# 1.5.1 -- 03/30/2025
+
+Fixes:
+
+- Fixed being able to interact with someone else's showcase interaction
 
 # 1.5.0 -- 03/28/2025
 
