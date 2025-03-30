@@ -22,10 +22,11 @@ async def ping(ctx):
 
 
 @bot.slash_command()
-async def showcase_rv(ctx, uid: str = None):
+async def showcase_rv(ctx: discord.ApplicationContext, uid: str = None):
     if not uid:
         await ctx.respond("No uid provided")
         return
+
     characters = showcase.get_character_showcase(uid)
     embed_field = "```\n"
     for character in characters:
@@ -39,7 +40,7 @@ async def showcase_rv(ctx, uid: str = None):
     embed.add_field(name="Characters", value=embed_field)
     await ctx.respond(
         embed=embed,
-        view=FullShowcaseView(characters)
+        view=FullShowcaseView(characters, ctx.author.id)
     )
 
 
