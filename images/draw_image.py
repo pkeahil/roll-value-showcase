@@ -336,7 +336,6 @@ def draw_character_weapon(
     y: int
 ):
     # Draw weapon
-    print(x, x + 550)
     draw.rounded_rectangle(
         (x, y, x + 550, y + 125),  # (805, 400, 1100, 500),
         radius=10,
@@ -513,7 +512,6 @@ def draw_artifact_set_bonuses(
             bonuses[name_hash] = 4
 
     # draw white box around
-    print(y, y + 80)
     draw.rounded_rectangle(
         (x, y, x + 550, y + 80),
         fill="black",
@@ -556,7 +554,6 @@ def draw_character_showcase(
         avatarInfo: dict,
         player_uid: str) -> Image:
     # Create base image, initialize font
-    print("in character showcase now")
     im = Image.new("RGB", (1465, 990), "black")
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype("fonts/JA-JP.TTF", 24)
