@@ -16,7 +16,11 @@ enka_api = "https://enka.network/"
 
 def draw_artifact_icon(im: Image, icon: str, x: int, y: int):
     response = requests.get(f"{enka_api}/ui/{icon}.png")
-    artifact_icon = Image.open(BytesIO(response.content)).resize((100, 100))
+    artifact_icon = (
+        Image.open(BytesIO(response.content))
+        .convert("RGBA")
+        .resize((100, 100))
+    )
     im.paste(artifact_icon, (x + 25, y), artifact_icon)
 
 
