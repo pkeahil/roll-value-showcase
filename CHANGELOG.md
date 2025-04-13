@@ -6,8 +6,18 @@ Includes relevant information about releases.
 ## Upcoming:
 
 - Add character quality, 4- vs 5-star
-- Add profile / saving
+- Add profile / linking UID to Discord account
 - Add highlight to constellation
+
+# 1.6.1 -- 04/13/2025
+
+Features:
+
+- Added being able to save your builds so that you're not limited to in-game showcase
+
+Fixes:
+
+- Updated certain characters useful substats
 
 # 1.5.1 -- 03/30/2025
 
