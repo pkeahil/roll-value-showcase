@@ -1,6 +1,10 @@
 
+pandas
 pillow
 py-cord
+pymysql
 python-dotenv
 redis
 requests
+sqlalchemy
+tabulate
