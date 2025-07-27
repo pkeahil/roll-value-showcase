@@ -178,6 +178,15 @@
             "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
+    "Dahlia": {
+        "useful_substats": [
+            "FIGHT_PROP_HP_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT"
+        ]
+    },
+
     "Dehya": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -217,6 +226,15 @@
             "FIGHT_PROP_ATTACK_PERCENT"
         ]
     },
+    "Escoffier": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Eula": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -300,6 +318,16 @@
             "FIGHT_PROP_CRITICAL_HURT",
             "FIGHT_PROP_ATTACK_PERCENT",
             "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Ifa": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
 
@@ -647,6 +675,14 @@
             "FIGHT_PROP_CRITICAL_HURT",
             "FIGHT_PROP_HP_PERCENT",
             "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
+    "Skirk": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT"
         ]
     },
 
