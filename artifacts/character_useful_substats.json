@@ -1,5 +1,14 @@
 
 {
+    "Aino": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
     "Albedo": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -259,6 +268,17 @@
             "FIGHT_PROP_ELEMENT_MASTERY"
         ]
     },
+
+    "Flins": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ATTACK_PERCENT",
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "FIGHT_PROP_CHARGE_EFFICIENCY"
+        ]
+    },
+
     "Freminet": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
@@ -469,6 +489,15 @@
             "FIGHT_PROP_ATTACK_PERCENT",
             "FIGHT_PROP_CHARGE_EFFICIENCY",
             "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
+    "Lauma": {
+        "useful_substats": [
+            "FIGHT_PROP_ELEMENT_MASTERY",
+            "FIGHT_PROP_CHARGE_EFFICIENCY",
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT"
         ]
     },
 
