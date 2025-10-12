@@ -1,11 +1,9 @@
 
 FROM python:3.12-slim-bullseye
-
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 WORKDIR /usr/src/app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
+RUN uv sync
 
-CMD [ "python", "./bot.py" ]
+CMD [ "uv", "run", "python", "./bot.py" ]
