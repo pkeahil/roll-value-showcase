@@ -624,12 +624,15 @@ def draw_character_showcase(
     x_box = 20
     y_box = 770
     artifacts_list = characters.get_artifact_list(avatarInfo)
+
+    total_roll_value = 0
     for artifact in artifacts_list:
         flat = artifact["flat"]
         if flat["itemType"] == "ITEM_RELIQUARY":
             roll_value, roll_value_color = (
                 artifacts.calculate_artifact_rv(artifact, character)
             )
+            total_roll_value += roll_value
 
             draw_artifact_box(im, x_box, y_box, roll_value_color)
             draw_artifact_icon(im, flat["icon"], x_box, y_box)
@@ -647,6 +650,12 @@ def draw_character_showcase(
 
             x_box += 285
 
+    draw.text(
+        (275, 730),
+        f"Total RV: {total_roll_value}%",
+        fill="white",
+        font=font
+    )
     draw_artifact_set_bonuses(
         draw,
         font,
