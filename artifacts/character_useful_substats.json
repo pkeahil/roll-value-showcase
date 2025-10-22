@@ -593,6 +593,14 @@
         ]
     },
 
+    "Nefer": {
+        "useful_substats": [
+            "FIGHT_PROP_CRITICAL",
+            "FIGHT_PROP_CRITICAL_HURT",
+            "FIGHT_PROP_ELEMENT_MASTERY"
+        ]
+    },
+
     "Neuvillette": {
         "useful_substats": [
             "FIGHT_PROP_CRITICAL",
