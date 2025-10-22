@@ -25,6 +25,7 @@ fill_color_map = {
 
 
 def draw_artifact_icon(im: Image, icon: str, x: int, y: int):
+    print(f"{enka_api}{icon}")
     response = requests.get(f"{enka_api}/ui/{icon}.png")
     artifact_icon = (
         Image.open(BytesIO(response.content))
@@ -233,7 +234,9 @@ def draw_character_talents(
 
     for talent_id in talent_ids:
         talent = char_info["Skills"][talent_id]
-        talent_response = requests.get(f"{enka_api}/ui/{talent}.png")
+        print(talent)
+        print(f"{enka_api}{talent}.png")
+        talent_response = requests.get(f"{enka_api}{talent}")
         talent_icon = (
             Image.open(
                 BytesIO(talent_response.content)
@@ -299,7 +302,7 @@ def draw_character_constellations(
         bg_color = bg_colors[char_info["Element"]]
         for i in range(constellation):
             const = char_info["Consts"][i]
-            const_response = requests.get(f"{enka_api}/ui/{const}.png")
+            const_response = requests.get(f"{enka_api}{const}")
             const_icon = (
                 Image.open(
                     BytesIO(const_response.content)
@@ -362,6 +365,7 @@ def draw_character_weapon(
 
     # Weapon Icon
     weapon_icon = flat["icon"]
+    print(f"{enka_api}{weapon_icon}")
     weapon_response = requests.get(f"{enka_api}/ui/{weapon_icon}.png")
     weapon = Image.open(
         BytesIO(weapon_response.content)
@@ -513,9 +517,13 @@ def draw_artifact_set_bonuses(
     y: int,
     energy_type: str
 ):
+    relics_api_endpoint = "https://raw.githubusercontent.com/EnkaNetwork/API-docs/refs/heads/master/store/gi/relics.json"
+    response = requests.get(relics_api_endpoint)
+    relics = response.json()
     set_count = {}
     for artifact in artifacts_list:
-        set_name_hash = artifact["flat"]["setNameTextMapHash"]
+        print(json.dumps(artifact, indent=2))
+        set_name_hash = str(artifact["flat"]["setId"])
         if set_name_hash not in set_count:
             set_count[set_name_hash] = 0
         set_count[set_name_hash] += 1
@@ -543,7 +551,10 @@ def draw_artifact_set_bonuses(
         )
     else:
         for name_hash, count in bonuses.items():
+            name_hash = relics["Sets"][name_hash]["Name"]
+            print(name_hash)
             name = localization["en"][name_hash]
+            print(name)
             name = name[:22] + "..." if len(name) > 25 else name
 
             draw.text(
