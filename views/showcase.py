@@ -38,7 +38,8 @@ class SelectCharacters(discord.ui.Select):
         image = draw_character_showcase(
             character_name,
             self.characters[character_name]["avatarInfo"],
-            self.characters[character_name]["player_uid"]
+            self.characters[character_name]["player_uid"],
+            self.characters[character_name]["energy_type"]
         )
         image_bytes_buffer = BytesIO()
         image.save(image_bytes_buffer, format="PNG")

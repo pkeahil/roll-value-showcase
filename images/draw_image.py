@@ -1,7 +1,5 @@
-# ok so artifacts section
 
-# 50, 250, 450, 650, 850 y
-# 1200 x
+import json
 from io import BytesIO
 
 import requests
@@ -9,9 +7,21 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageChops
 
 from artifacts import artifacts
 from characters import characters
+from images.box_highlight import get_artifact_box
 from localization.localization import localization
 
 enka_api = "https://enka.network/"
+
+fill_color_map = {
+    "1": "#290D0D",
+    "2": "#00122E",
+    "3": "#001603",
+    "4": "#09001A",
+    "5": "#00181A",
+    "7": "#001F17",
+    "8": "#1F1700",
+
+}
 
 
 def draw_artifact_icon(im: Image, icon: str, x: int, y: int):
@@ -25,11 +35,12 @@ def draw_artifact_icon(im: Image, icon: str, x: int, y: int):
 
 
 def draw_artifact_box(
-    im: Image, x: int, y: int, bg_color: str
+    im: Image, x: int, y: int, energy_type: str, quality_color: str
 ):
-    path = f"images/ui/artifact_{bg_color}_quality.png"
-    artifact_box = Image.open(path)
-    artifact_box = artifact_box.crop((85, 85, 495, 415)).resize((285, 210))
+    element_color = fill_color_map.get(energy_type, "black")
+    artifact_box = get_artifact_box(element_color, quality_color)
+
+    artifact_box = artifact_box.crop((95, 95, 480, 400)).resize((285, 210))
     im.paste(artifact_box, (x, y - 5))
 
 
@@ -119,11 +130,11 @@ def draw_character_stats(
         font: ImageFont,
         total_stats: dict,
         x: int,  # start at 5
-        y: int):  # start at 825
+        y: int,  # start at 825
+        energy_type: str):
     draw.rounded_rectangle(
-        (x, y, x + 550, y + 380),
-        fill="black",
-        outline="white",
+        (x, y, x + 600, y + 380),
+        fill=f"{fill_color_map.get(energy_type, 'black')}",
         width=3,
         radius=10
     )
@@ -337,14 +348,14 @@ def draw_character_weapon(
     font: ImageFont,
     avatarInfo: dict,
     x: int,
-    y: int
+    y: int,
+    energy_type: str
 ):
     # Draw weapon
     draw.rounded_rectangle(
-        (x, y, x + 550, y + 125),  # (805, 400, 1100, 500),
+        (x, y, x + 600, y + 125),  # (805, 400, 1100, 500),
         radius=10,
-        fill="black",
-        outline="white",
+        fill=f"{fill_color_map.get(energy_type, 'black')}",
         width=3
     )
     flat = avatarInfo["equipList"][-1]["flat"]
@@ -370,7 +381,7 @@ def draw_character_weapon(
     all_weapon_info = avatarInfo["equipList"][-1]
     refine_level = list(all_weapon_info["weapon"]["affixMap"].values())[0] + 1
     draw.text(
-        (x + 10, y + 10),
+        (x + 25, y + 10),
         f"R{refine_level}",
         fill="white",
         font=font
@@ -383,7 +394,7 @@ def draw_character_weapon(
 
     weapon_name = (weapon_name[:27] + "..." if needs_ellipses else weapon_name)
     draw.text(
-        (x + 300, y + 10),
+        (x + 305, y + 10),
         f"{weapon_name}",
         fill="white",
         font=font,
@@ -395,10 +406,10 @@ def draw_character_weapon(
     atk_icon = Image.open(
         "images/stat_icons/FIGHT_PROP_ATTACK.png"
     ).resize((30, 30))
-    im.paste(atk_icon, (x + 160, y + 45), atk_icon)
+    im.paste(atk_icon, (x + 200, y + 45), atk_icon)
 
     draw.text(
-        (x + 200, y + 45),
+        (x + 240, y + 45),
         f"{weapon_base_atk['statValue']}",
         fill="white",
         font=font
@@ -410,9 +421,9 @@ def draw_character_weapon(
         f"images/stat_icons/{secondary_stat['appendPropId']}.png"
     ).resize((30, 30))
     secondary_stat_id = secondary_stat["appendPropId"]
-    im.paste(secondary_stat_icon, (x + 280, y + 45), secondary_stat_icon)
+    im.paste(secondary_stat_icon, (x + 315, y + 45), secondary_stat_icon)
     draw.text(
-        (x + 320, y + 45),
+        (x + 355, y + 45),
         f"""{secondary_stat['statValue']}{
             '%' if secondary_stat_id in include_percentage_substats
             else ''
@@ -423,7 +434,7 @@ def draw_character_weapon(
 
     weapon_level = all_weapon_info["weapon"]["level"]
     draw.text(
-        (x + 275, y + 85),
+        (x + 310, y + 85),
         f"Lv. {weapon_level}",
         fill="white",
         font=font,
@@ -438,7 +449,8 @@ def draw_akasha_ranking(
     draw: ImageDraw,
     font: ImageFont,
     x: int,
-    y: int
+    y: int,
+    energy_type: str
 ):
     # Get Akasha ranking
     akasha_api_url = "https://akasha.cv/api"
@@ -467,15 +479,14 @@ def draw_akasha_ranking(
             leaderboard_name += f" {rank_calc['variant']['displayName']}"
 
     draw.rounded_rectangle(
-        (x, y, x + 550, y + 100),
+        (x, y, x + 600, y + 100),
         radius=10,
-        fill="black",
-        outline="white",
+        fill=f"{fill_color_map.get(energy_type, 'black')}",
         width=3
     )
 
     draw.text(
-        (x + 275, y + 10),
+        (x + 300, y + 10),
         f"{leaderboard_name}",
         fill="white",
         font=font,
@@ -486,7 +497,7 @@ def draw_akasha_ranking(
     if has_leaderboard:
         percentage = 100 - int((out_of - rank) / out_of * 100)
         draw.text(
-            (x + 275, y + 50),
+            (x + 305, y + 50),
             f"Top {percentage}%\t{rank} / {out_of // 1000}k",
             fill="white",
             font=font,
@@ -499,7 +510,8 @@ def draw_artifact_set_bonuses(
     font: ImageFont,
     artifacts_list: list,
     x: int,
-    y: int
+    y: int,
+    energy_type: str
 ):
     set_count = {}
     for artifact in artifacts_list:
@@ -517,15 +529,14 @@ def draw_artifact_set_bonuses(
 
     # draw white box around
     draw.rounded_rectangle(
-        (x, y, x + 550, y + 80),
-        fill="black",
+        (x, y, x + 600, y + 80),
+        fill=f"{fill_color_map.get(energy_type, 'black')}",
         radius=10,
         width=3,
-        outline="white"
     )
     if len(bonuses) == 0:
         draw.text(
-            (x + 275, y + 10),
+            (x + 315, y + 10),
             "No Set Bonuses",
             fill="white",
             font=font
@@ -536,7 +547,7 @@ def draw_artifact_set_bonuses(
             name = name[:22] + "..." if len(name) > 25 else name
 
             draw.text(
-                (x + 275, y + 10),
+                (x + 305, y + 10),
                 f"{name} ({count})",
                 fill="lightgreen",
                 font=font,
@@ -556,9 +567,19 @@ include_percentage_substats = [
 def draw_character_showcase(
         character: str,
         avatarInfo: dict,
-        player_uid: str) -> Image:
-    # Create base image, initialize font
-    im = Image.new("RGB", (1465, 990), "black")
+        player_uid: str,
+        energy_type: str) -> Image:
+    type_map = {
+        "1": "#472321",
+        "2": "#00305E",
+        "3": "#083000",
+        "4": "#1d0042",
+        "5": "#004144",
+        "7": "#003B33",
+        "8": "#573e00"
+    }
+
+    im = Image.new("RGB", (1465, 990), type_map.get(energy_type, "black"))
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype("fonts/JA-JP.TTF", 24)
 
@@ -574,7 +595,7 @@ def draw_character_showcase(
     )
 
     # Draw character total stats
-    draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 845, 20)
+    draw_character_stats(im, draw, font, avatarInfo["fightPropMap"], 845, 20, energy_type)
 
     # Draw character talents
     char_info = characters.character_info[str(avatarInfo["avatarId"])]
@@ -584,7 +605,7 @@ def draw_character_showcase(
     draw_character_constellations(im, draw, avatarInfo, char_info, 750, 310)
 
     # Draw weapon
-    draw_character_weapon(im, draw, font, avatarInfo, 845, 405)
+    draw_character_weapon(im, draw, font, avatarInfo, 845, 405, energy_type)
 
     # Draw character name
     larger_font = ImageFont.truetype("fonts/JA-JP.TTF", 36)
@@ -618,7 +639,7 @@ def draw_character_showcase(
     )
 
     # Get Akasha ranking
-    draw_akasha_ranking(player_uid, character, draw, font, 845, 535)
+    draw_akasha_ranking(player_uid, character, draw, font, 845, 535, energy_type)
 
     # Draw artifacts
     x_box = 20
@@ -634,7 +655,7 @@ def draw_character_showcase(
             )
             total_roll_value += roll_value
 
-            draw_artifact_box(im, x_box, y_box, roll_value_color)
+            draw_artifact_box(im, x_box, y_box, energy_type, roll_value_color)
             draw_artifact_icon(im, flat["icon"], x_box, y_box)
             draw_artifact_substats(
                 im, draw, font, flat, x_box + 185, y_box + 25
@@ -661,7 +682,8 @@ def draw_character_showcase(
         font,
         artifacts_list,
         845,
-        645
+        645,
+        energy_type
     )
 
     return im
