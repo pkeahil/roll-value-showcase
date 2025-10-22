@@ -7,7 +7,7 @@ from localization.localization import localization
 def get_character_info():
     github_url = "https://raw.githubusercontent.com"
     enka_repo = "EnkaNetwork/API-docs/refs/heads/master"
-    character_endpoint = "store/characters.json"
+    character_endpoint = "store/gi/avatars.json"
 
     url = f"{github_url}/{enka_repo}/{character_endpoint}"
     response = requests.get(url)
