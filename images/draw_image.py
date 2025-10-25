@@ -593,16 +593,24 @@ def draw_character_showcase(
     im = Image.new("RGB", (1465, 990), type_map.get(energy_type, "black"))
     draw = ImageDraw.Draw(im)
     font = ImageFont.truetype("fonts/JA-JP.TTF", 24)
+    fontsmall = ImageFont.truetype("fonts/JA-JP.TTF", 20)
 
     # Draw character splash art
     draw_splash_art(im, character)
 
     # Draw player's uid
+    draw.rounded_rectangle(
+        (30, 728, 285, 760),
+        fill=fill_color_map.get(energy_type, "black"),
+        width=1,
+        radius=10
+    )
+    
     draw.text(
-        (20, 730),
+        (70, 732),
         f"UID: {player_uid}",
         fill="white",
-        font=font
+        font=fontsmall
     )
 
     # Draw character total stats
@@ -682,12 +690,21 @@ def draw_character_showcase(
 
             x_box += 285
 
+    # Total Roll Value
+    draw.rounded_rectangle(
+        (320, 728, 570, 760),
+        fill=fill_color_map.get(energy_type, "black"),
+        width=1,
+        radius=10
+    )
     draw.text(
-        (275, 730),
+        (355, 732),
         f"Total RV: {total_roll_value}%",
         fill="white",
-        font=font
+        font=fontsmall
     )
+
+    # Artifact set bonuses
     draw_artifact_set_bonuses(
         draw,
         font,
